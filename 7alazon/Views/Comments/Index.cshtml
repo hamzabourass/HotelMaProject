@@ -1,0 +1,55 @@
+﻿@model IEnumerable<_7alazon.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Comments pannel </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") |
+    <a href="@Url.Action("Index", "Users")">Users Panel</a> |
+    <a href="@Url.Action("Index", "Hotels")">Hotels Panel</a> |
+    <a href="@Url.Action("Index", "Rooms")">Rooms Panel</a> |
+    <a href="@Url.Action("Index", "Bookings")">Bookings Panel</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hotel.HotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hotel.HotelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CommentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CommentID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,66 @@
+﻿@model _7alazon.Models.Room
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Room</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomAvailability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomAvailability)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotel.HotelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotel.HotelName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoomID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

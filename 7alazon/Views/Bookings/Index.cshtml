@@ -1,0 +1,64 @@
+﻿@model IEnumerable<_7alazon.Models.Booking>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bookings pannel</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") |
+    <a href="@Url.Action("Index", "Users")">Users Panel</a> |
+    <a href="@Url.Action("Index", "Hotels")">Hotels Panel</a> |
+    <a href="@Url.Action("Index", "Rooms")">Rooms Panel</a> |
+    <a href="@Url.Action("Index", "Comments")">Comments Panel</a>
+
+
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Room.RoomNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room.RoomNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BookingID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BookingID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BookingID })
+        </td>
+    </tr>
+}
+
+</table>

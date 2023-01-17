@@ -1,0 +1,35 @@
+﻿@model _7alazon.Models.User
+
+
+@{
+    ViewBag.Title = "Login";
+}
+<br>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Users", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserPassword, htmlAttributes: new { @class = "control-label" })
+        @Html.PasswordFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Log In" class="btn btn-primary" />
+    </div>
+}

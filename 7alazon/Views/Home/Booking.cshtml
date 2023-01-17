@@ -1,0 +1,19 @@
+﻿@model _7alazon.Models.Booking
+
+
+<form asp-controller="Home" asp-action="BookRoom" method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label for="checkin">Check-in</label>
+        <input type="date" class="form-control" id="checkin" name="checkIn" required>
+    </div>
+    <div class="form-group">
+        <label for="checkout">Check-out</label>
+        <input type="date" class="form-control" id="checkout" name="checkOut" required>
+    </div>
+    <input type="hidden" name="roomId" value="@Model.RoomId" />
+    <button type="submit" class="btn btn-primary">Book Room</button>
+</form>

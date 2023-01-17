@@ -1,0 +1,56 @@
+﻿@model IEnumerable<_7alazon.Models.Booking>
+
+<h2>Mes réservations</h2>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CheckIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etat)
+        </th>
+      
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etat)
+            </td>
+           
+
+            <td>
+                @Html.ActionLink("Room Details", "RoomDetails", new { id = item.RoomID }) |
+                
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+

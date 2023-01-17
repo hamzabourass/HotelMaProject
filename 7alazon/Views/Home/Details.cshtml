@@ -1,0 +1,68 @@
+﻿@model _7alazon.Models.Hotel
+
+@{
+    ViewBag.Title = "Details";
+}
+<br>
+<div class="hotel-container">
+    <div class="hotel-image">
+        <img src="@Model.Photo" alt="Hotel Image" style="width:550px; height: 350px;">
+    </div>
+    <div class="hotel-info">
+        <h1>@Model.HotelName</h1>
+        <h2>Adresse:</h2> <p> @Model.HotelAddress</p>
+        <h2>Numéro de téléphone:</h2> <p>@Model.HotelPhoneNumber</p>
+        <h2>Email:</h2> <p> @Model.HotelEmail</p>
+        <h2>    Note:    </h2><p> @Model.HotelRating</p>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Back to Home", "Index") ||
+    @Html.ActionLink("Hotel Rooms", "ShowRooms", new { id = @Model.HotelID })
+
+
+</p>
+<form method="post" action="@Url.Action("CreateComment", "Home")">
+    <input type="hidden" name="hotelId" value="@Model.HotelID" />
+    <input type="hidden" name="userName" value="@Session["UserName"]" />
+
+    <div class="form-group">
+        <label>Comment:</label>
+        <textarea class="form-control" name="comment" required></textarea>
+    </div>
+    <input type="submit" value="Submit Comment" class="btn btn-primary" />
+</form>
+<br>
+<br>
+@foreach (var comment in Model.Comments)
+{
+    <div class="comment ">
+       <h4> <p>@comment.User.UserName <= @comment.CommentDate</p></h4>
+        <p class="glyphicon-circle-arrow-down">@comment.Comment1</p>
+    </div>
+}
+@if (ViewBag.Error != null)
+{
+    <p class="error">@ViewBag.Error</p>
+}
+
+<style>
+    .hotel-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .hotel-image {
+        margin-right: 100px;
+    }
+
+    .hotel-info h2 {
+        margin-bottom: 10px;
+    }
+
+    .hotel-info p {
+        margin: 0;
+    }
+</style>
+
+

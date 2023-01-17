@@ -1,0 +1,72 @@
+﻿@model IEnumerable<_7alazon.Models.Hotel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hotels pannel</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") |
+    <a href="@Url.Action("Index", "Users")">Users Panel</a> |
+    <a href="@Url.Action("Index", "Rooms")">Rooms Panel</a> |
+    <a href="@Url.Action("Index", "Bookings")">Bookings Panel</a> |
+    <a href="@Url.Action("Index", "Comments")">Comments Panel</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelRating)
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.Photo)" alt="Category image" style="width: 150px;">
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.HotelID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.HotelID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.HotelID }) |
+            
+
+
+        </td>
+    </tr>
+}
+
+</table>
