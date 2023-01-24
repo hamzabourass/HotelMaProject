@@ -14,12 +14,6 @@ namespace _7alazon.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public enum UserType
-    {
-        Admin,
-        Client
-    }
-
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,7 +22,7 @@ namespace _7alazon.Models
             this.Bookings = new HashSet<Booking>();
             this.Comments = new HashSet<Comment>();
         }
-    
+
         public int UserID { get; set; }
         [Required(ErrorMessage = "Firstname is required")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.")]
@@ -59,7 +53,7 @@ namespace _7alazon.Models
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
         public string UserType { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

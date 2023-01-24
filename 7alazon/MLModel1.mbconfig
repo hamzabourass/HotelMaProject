@@ -1,5 +1,5 @@
 ﻿{
-  "TrainingTime": 10,
+  "TrainingTime": 60,
   "Scenario": "Classification",
   "DataSource": {
     "Type": "TabularFile",
@@ -21,7 +21,7 @@
         "ColumnName": "new_reviews",
         "ColumnPurpose": "Feature",
         "ColumnDataFormat": "String",
-        "IsCategorical": true,
+        "IsCategorical": false,
         "Type": "Column",
         "Version": 2
       }
@@ -39,26 +39,29 @@
         "Version": 0,
         "Type": "Trial",
         "TrainerName": "SdcaMaximumEntropyMulti",
-        "Score": 0.73357963875205257,
-        "RuntimeInSeconds": 4.0469999313354492
+        "Score": 0.743431855500821,
+        "RuntimeInSeconds": 9.560999870300293
       },
       {
         "Version": 0,
         "Type": "Trial",
-        "TrainerName": "SdcaMaximumEntropyMulti",
-        "Score": 0.73357963875205257,
-        "RuntimeInSeconds": 2.2990000247955322
+        "TrainerName": "LbfgsLogisticRegressionOva",
+        "Score": 0.83990147783251234,
+        "RuntimeInSeconds": 17.996000289916992
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "FastForestOva",
+        "Score": 0.798440065681445,
+        "RuntimeInSeconds": 28.479000091552734
       }
     ],
     "Pipeline": {
       "parameter": {
         "0": {
-          "OutputColumnNames": [
-            "new_reviews"
-          ],
-          "InputColumnNames": [
-            "new_reviews"
-          ]
+          "InputColumnName": "new_reviews",
+          "OutputColumnName": "new_reviews"
         },
         "1": {
           "InputColumnNames": [
@@ -80,7 +83,7 @@
         },
         "4": {
           "L1Regularization": 1.0,
-          "L2Regularization": 0.1,
+          "L2Regularization": 1.0,
           "LabelColumnName": "score",
           "FeatureColumnName": "Features"
         },
@@ -90,11 +93,11 @@
         }
       },
       "estimators": [
-        "OneHotEncoding",
+        "FeaturizeText",
         "Concatenate",
         "MapValueToKey",
         "NormalizeMinMax",
-        "SdcaMaximumEntropyMulti",
+        "LbfgsLogisticRegressionOva",
         "MapKeyToValue"
       ]
     },

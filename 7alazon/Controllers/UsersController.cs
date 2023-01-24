@@ -22,7 +22,7 @@ namespace _7alazon.Controllers
  
         public ActionResult Index()
         {
-            if (Session["UserType"].ToString() == "Client") 
+            if (Session["UserType"].ToString() == "Client" || Session["UserType"] == null ) 
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -239,7 +239,7 @@ namespace _7alazon.Controllers
                 
                 else
                 {
-                    ModelState.AddModelError("", "User does not exist.");
+                    TempData["ErrorMessage"] = "User Is Not Found Try Again!";
                     return View();
                 }
             }

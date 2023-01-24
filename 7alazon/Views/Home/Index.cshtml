@@ -4,17 +4,80 @@
     ViewBag.Title = "Home Page";
 }
 <br>
+
+<html>
+
+<head>
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <style>
+        .mySlides {
+            display: none;
+        }
+        .w3-center {
+            font-weight: bold;
+            color: black;
+            font-family:Andalus;
+        }
+
+        .mySlides {
+            border-radius: 50px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <h2 class="w3-center">Book Your Room Now ! </h2>
+    @foreach (var hotel in Model)
+    {
+       
+<div class="w3-content w3-section" style="max-width:700px">
+    <a href="@Url.Action("Details", "Home", new { id = hotel.HotelID })">
+    <img class="mySlides" src="@hotel.Photo" style="width:100%" />
+    </a>
+
+</div>
+    }
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+    </script>
+
+</body>
+</html>
+
+
 <br>
 <div class="row">
     @foreach (var hotel in Model)
     {
+
+
+
         <div class="col-md-4">
             <div class="card">
                 <h4 class="card-title">@hotel.HotelName</h4>
 
                 <img src="@hotel.Photo" class="card-img-top" alt="Hotel Image">
                 <br>
-                <a href="@Url.Action("Details", "Home", new { id = hotel.HotelID })" class="btn btn-primary">View Details</a>
+                <a href="@Url.Action("Details", "Home", new { id = hotel.HotelID })" class="btn btn-primary center-block">View Details</a>
 
                 <div class="card-body">
 
@@ -27,7 +90,7 @@
 <style>
     .btn.btn-primary {
         margin-top: 10px;
-        background-color: blue;
+        background-color: green;
         color: white;
         padding: 10px 20px;
         border-radius: 5px;
@@ -47,3 +110,5 @@
         text-align: center;
     }
 </style>
+
+

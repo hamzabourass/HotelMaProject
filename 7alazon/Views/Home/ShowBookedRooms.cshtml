@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<_7alazon.Models.Booking>
-
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<br>
 <h2>Mes réservations</h2>
-
-
 
 
 <table class="table">
@@ -10,6 +13,7 @@
         <th>
             @Html.DisplayNameFor(model => model.User.FirstName)
         </th>
+
 
         <th>
             @Html.DisplayNameFor(model => model.CheckIn)
@@ -20,7 +24,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Etat)
         </th>
-      
+
+
 
         <th></th>
     </tr>
@@ -31,6 +36,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.User.FirstName)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.CheckIn)
             </td>
@@ -40,17 +46,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Etat)
             </td>
-           
+
 
             <td>
-                @Html.ActionLink("Room Details", "RoomDetails", new { id = item.RoomID }) |
-                
-
+                <button class="custom-button">
+                    @Html.ActionLink("Room Details", "RoomDetails", new { id = item.RoomID })
+                </button>
 
 
             </td>
         </tr>
     }
+
 
 </table>
 

@@ -4,18 +4,42 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-sm-4">
-            <div class="card">
-                <img class="card-img-top" src="@item.Photo" alt="Room Image" style="height: 200px;">
-                <div class="card-body">
-                    <h5 class="card-title">Room Type : @item.RoomType</h5>
-                    <p class="card-text">Price : @item.RoomPrice</p>
+        if (item.RoomAvailability == true)
+        {
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" src="@item.Photo" alt="Room Image" style="height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Room Type : @item.RoomType</h5>
+                        <p class="card-text">Price : @item.RoomPrice</p>
+
+                        <h4 class="card-title text-danger">Room is Already Booked</h4>
+
+
+                    </div>
+
 
                 </div>
-                @Html.ActionLink("Room Details", "RoomDetails", new { id = item.RoomID })
-
-
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" src="@item.Photo" alt="Room Image" style="height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Room Type : @item.RoomType</h5>
+                        <p class="card-text">Price : @item.RoomPrice</p>
+
+
+
+                    </div>
+                    @Html.ActionLink("Room Details", "RoomDetails", new { id = item.RoomID })
+
+
+                </div>
+            </div>
+        }
+
     }
 </div>

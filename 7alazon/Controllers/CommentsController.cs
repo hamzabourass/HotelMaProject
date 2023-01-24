@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using _7alazon.Models;
+using Microsoft.ML;
 
 namespace _7alazon.Controllers
 {
+    
+
     public class CommentsController : Controller
     {
         private TrivagoDBEntities db = new TrivagoDBEntities();

@@ -13,6 +13,7 @@ namespace _7alazon.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+
     public partial class Hotel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,7 @@ namespace _7alazon.Models
             this.Comments = new HashSet<Comment>();
             this.Rooms = new HashSet<Room>();
         }
-        
+
         public int HotelID { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 5, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.")]
@@ -42,7 +43,7 @@ namespace _7alazon.Models
         public int HotelRating { get; set; }
         [Required]
         public string Photo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

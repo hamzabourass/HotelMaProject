@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
+<br>
+<br>
 
 <h2>Bookings pannel</h2>
 
@@ -36,29 +38,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckIn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckOut)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Room.RoomNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookingID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookingID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookingID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BookingID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BookingID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookingID })
+            </td>
+        </tr>
+    }
 
 </table>

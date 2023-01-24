@@ -1,4 +1,8 @@
 ﻿@model _7alazon.Models.Room
+@{
+    var booking = (new _7alazon.Models.Booking());
+}
+
 
 
 
@@ -22,16 +26,30 @@
 }
 <div class="hotel-container">
     <div class="hotel-image">
-        <img src="@Model.Photo" alt="Hotel Image" style="width:550px; height: 350px;">
+        <img src="@Model.Photo" alt="Hotel Image" style="width:550px; height: 350px;" class="room-image">
     </div>
     <div class="hotel-info">
-        <h3>Room Number:</h3> <p> @Model.RoomNumber</p>
-        <h3>Room Price :</h3> <p>@Model.RoomPrice</p>
-        <h3>Room type:</h3> <p>  For @Model.RoomType person(s)</p>
+        <h2 class="text-center"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Room Info </h2>
+
+        <h4 class="text">Room Number:</h4> <p class="id1"> @Model.RoomNumber</p>
+        <h4 class="text">Room Price :</h4> <p class="id1">@Model.RoomPrice MAD</p>
+        <h4 class="text">Room type:</h4> <p class="id1">  For @Model.RoomType person(s)</p>
 
     </div>
 
+
 </div>
+<br>
+<p>
+    <button class="btn-outline-primary">
+        @Html.ActionLink("Hotel Info", "Details", new { id = @Model.HotelID }) 
+    </button>
+    &nbsp;&nbsp;&nbsp;<button class="btn-outline-primary">
+        @Html.ActionLink("Hotel Rooms", "ShowRooms", new { id = @Model.HotelID })
+    </button>
+
+
+</p>
 
 @if (@Model.RoomAvailability == false)
 {
@@ -57,17 +75,16 @@
 }
 else
 {
-
-
     if (Session["UserName"] != null)
     {
 
-<form method="post" action="@Url.Action("Unbook", "Home")">
-    <input type="hidden" name="roomid" value="@Model.RoomID" />
-    <br>
-    <input type="submit" value="Unbook" class="btn btn-danger" />
-</form>
-        }
+
+        <form method="post" action="@Url.Action("Unbook", "Home")">
+            <input type="hidden" name="roomid" value="@Model.RoomID" />
+            <br>
+            <input type="submit" value="Unbook" class="btn btn-danger" />
+        </form>
+    }
     else
     {
         <h3> Booked :(</h3>
@@ -100,13 +117,91 @@ else
         margin: 0;
     }
 </style>
+<style>
+    h4.text, h5 {
+        display: inline-block;
+    }
 
-<p>
-    @Html.ActionLink("Back to Home", "Index") ||
-    @Html.ActionLink("Hotel Rooms", "ShowRooms", new { id = @Model.HotelID })
+    .comment {
+        font-weight: bold;
+    }
+
+    .text {
+        font-family: Andalus;
+        font-weight: bold;
+    }
+
+    .hotel-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .hotel-image {
+        margin-right: 100px;
+        border-radius: 10px;
+        margin-left: 0px;
+    }
+
+    .room-image {
+        border-radius: 10px;
+    }
+
+    .hotel-info {
+        background-color: cornflowerblue;
+        padding: 20px;
+        border-radius: 10px;
+        margin-right: 50px;
+    }
+
+        .hotel-info h2 {
+            margin-bottom: 10px;
+        }
+
+        .hotel-info p {
+            margin: 0;
+        }
+
+    .text-center {
+        font-weight: bold;
+        color: black;
+        margin-right: 100px;
+        font-family: Aldhabi;
+    }
+
+    
 
 
-</p>
+
+    .id1 {
+        font-weight: bold;
+        color: black;
+    }
+
+
+
+    .id2 {
+        font-weight: bold;
+        color: black;
+    }
+
+
+
+    .id3 {
+        font-weight: bold;
+        color: black;
+    }
+
+
+
+    .id5 {
+        font-weight: bold;
+        color: black;
+        textcenter;
+    }
+</style>
+
+
+
 
 
 

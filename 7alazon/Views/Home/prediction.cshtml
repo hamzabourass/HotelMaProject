@@ -1,0 +1,79 @@
+﻿
+@model _7alazon.Controllers.HomeController.MLModel1.ModelInput
+<br>
+<br>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    @using (@Html.BeginForm())
+    {
+
+        int i = 0;
+        <input type="hidden" name="userName" value="@Session["UserName"]" />
+
+        <table>
+            <tr> Enter Your Comment : </tr>
+            <tr>
+                <td>@Html.TextBoxFor(m => m.New_reviews) </td>
+
+            </tr>
+            <tr>
+
+                <td><input  class="btn-outline-primary" type="submit" value="prediction" /></td>
+                <td></td>
+            </tr>
+
+
+        </table>
+
+
+
+
+        <div class="row row-content">
+            <div class="col-12 col-sm-2">
+                @if (ViewBag.Result != null)
+                {
+
+                    if (ViewBag.Result.Prediction == 1)
+                    {
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%; background-color: forestgreen" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+
+
+                    }
+                    else if (ViewBag.Result.Prediction == 0)
+                    {
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%; background-color: orange" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped " role="progressbar" style="width: 25%; background-color: orangered" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                    }
+
+                }
+            </div>
+        </div>
+
+    }
+
+</body>
+
+
+</html>

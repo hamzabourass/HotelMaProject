@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<br>
+<br>
 <h2>Rooms pannel</h2>
 
 <p>
@@ -37,35 +38,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoomNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoomType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoomPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoomAvailability)
-        </td>
-        <td>
-            <img src="@Html.DisplayFor(modelItem => item.Photo)" alt="Category image" style="width: 150px;">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomAvailability)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.Photo)" alt="Category image" style="width: 150px;">
 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hotel.HotelName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.RoomID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.RoomID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.RoomID })|
-           
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hotel.HotelName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RoomID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RoomID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RoomID })|
 
-        </td>
-    </tr>
-}
+
+            </td>
+        </tr>
+    }
 
 </table>

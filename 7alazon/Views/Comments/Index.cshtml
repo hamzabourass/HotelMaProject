@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
+<br>
+<br>
 
 <h2>Comments pannel </h2>
 
@@ -30,26 +32,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hotel.HotelName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CommentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CommentID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hotel.HotelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.CommentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
+            </td>
+        </tr>
+    }
 
 </table>

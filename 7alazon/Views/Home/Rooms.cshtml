@@ -4,39 +4,252 @@
     ViewBag.Title = "Rooms";
 }
 
+<br>
 
-<br>
-<br>
-<div class="row">
+<html>
+
+<head>
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <style>
+        .mySlides {
+            display: none;
+        }
+
+        .w3-center {
+            font-weight: bold;
+            color: black;
+            font-family: Andalus;
+        }
+
+        .mySlides {
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 class="w3-center">Available Rooms</h2>
     @foreach (var room in Model)
     {
         if (@room.RoomAvailability == false)
         {
-            <div class="col-md-4">
-                <div class="card">
 
-                    <img src="@room.Photo" class="card-img-top" alt="Hotel Image">
-                    <h2 class="card-title">@room.RoomPrice DH</h2>
+        <div class="w3-content w3-section" style="max-width:700px">
+            <a href="@Url.Action("RoomDetails", "Home", new { id = room.RoomID })">
+                <img class="mySlides" src="@room.Photo" style="width:100%" />
+            </a>
+
+        </div>
+        }
+    }
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+    </script>
+
+</body>
+</html>
+<br>
+<div class="row">
+    @{
+        var displayedTypes = new List<int>();
+    }
+    @foreach (var room in Model)
+    {
+        if (@room.RoomAvailability == false)
+        {
+
+            if (room.RoomType == "1")
+            {
+                <div class="col-md-4">
+                    <div class="card">
+
+                        <h4 class="card-title" id="color">Room For @room.RoomType Person(s)</h4>
+
+                        <img src="@room.Photo" class="card-img-top" alt="Hotel Image">
+                        <h2 class="card-body">@room.RoomPrice DH</h2>
 
 
-                    <a href="@Url.Action("RoomDetails", "Home", new { id = room.RoomID })" class="btn btn-primary">View Details</a>
+                        <a href="@Url.Action("RoomDetails", "Home", new { id = room.RoomID })" class="btn btn-primary center-block">View Details</a>
 
 
-                    <div class="card-body">
+                        <div class="card-body">
 
+                        </div>
                     </div>
                 </div>
-            </div>
             }
-        }
-        <br>
 
-    </div>
+        }
+    }
+    @foreach (var room in Model)
+    {
+        if (@room.RoomAvailability == false)
+        {
+            if (room.RoomType == "2")
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <h4 class="card-title">Room For @room.RoomType Person(s)</h4>
+
+
+                        <img src="@room.Photo" class="card-img-top" alt="Hotel Image">
+                        <h2 class="card-body">@room.RoomPrice DH</h2>
+
+
+                        <a href="@Url.Action("RoomDetails", "Home", new { id = room.RoomID })" class="btn btn-primary center-block">View Details</a>
+
+
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+    <br>
+
+    @foreach (var room in Model)
+    {
+        if (@room.RoomAvailability == false)
+        {
+            if (room.RoomType == "3")
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <h4 class="card-title">Room For @room.RoomType Person(s)</h4>
+
+                        <img src="@room.Photo" class="card-img-top" alt="Hotel Image">
+                        <h2 class="card-body">@room.RoomPrice DH</h2>
+
+
+                        <a href="@Url.Action("RoomDetails", "Home", new { id = room.RoomID })" class="btn btn-primary center-block">View Details</a>
+
+
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+    <br>
+
+    @foreach (var room in Model)
+    {
+        if (@room.RoomAvailability == false)
+        {
+            if (room.RoomType == "4")
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <h4 class="card-title">Room For @room.RoomType Person(s)</h4>
+
+                        <img src="@room.Photo" class="card-img-top" alt="Hotel Image">
+                        <h2 class="card-body">@room.RoomPrice DH</h2>
+
+
+                        <a href="@Url.Action("RoomDetails", "Home", new { id = room.RoomID })" class="btn btn-primary center-block">View Details</a>
+
+
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+    <br>
+
+    @foreach (var room in Model)
+    {
+        if (@room.RoomAvailability == false)
+        {
+            if (room.RoomType == "5")
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <h4 class="card-body">Room For @room.RoomType Person(s)</h4>
+
+                        <img src="@room.Photo" class="card-img-top" alt="Hotel Image">
+                        <h2 class=" card-body">@room.RoomPrice DH</h2>
+
+
+                        <a href="@Url.Action("RoomDetails", "Home", new { id = room.RoomID })" class="btn btn-primary center-block">View Details</a>
+
+
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+    <br>
+
+
+    @foreach (var room in Model)
+    {
+        if (@room.RoomAvailability == false)
+        {
+            if (room.RoomType == "6")
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <h4 class="card-title">Room For @room.RoomType Person(s)</h4>
+
+                        <img src="@room.Photo" class="card-img-top" alt="Hotel Image">
+                        <h2 class="card-body">@room.RoomPrice DH</h2>
+
+
+                        <a href="@Url.Action("RoomDetails", "Home", new { id = room.RoomID })" class="btn btn-primary center-block">View Details</a>
+
+
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+    <br>
+
+</div>
 
 <style>
+    id {
+        border-right-color: green;
+    }
+
     .btn.btn-primary {
-        
-        background-color: blue;
+        background-color: green;
         color: white;
         padding: 10px 20px;
         border-radius: 5px;
@@ -54,5 +267,18 @@
         font-size: 15px;
         font-weight: bold;
         text-align: center;
+        color: green;
+    }
+
+    .card-body {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        color: black;
+    }
+
+    .text-center {
+        font-weight: bold;
+        color: black;
     }
 </style>

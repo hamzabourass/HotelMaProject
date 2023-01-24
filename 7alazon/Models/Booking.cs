@@ -32,7 +32,7 @@ namespace _7alazon.Models
         public System.DateTime CheckOut { get; set; }
         [Required]
         public string Etat { get; set; }
-    
+
         public virtual Room Room { get; set; }
         public virtual User User { get; set; }
     }

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
-using Microsoft.ML.Transforms;
 using Microsoft.ML;
 
 namespace _7alazon
@@ -35,11 +34,11 @@ namespace _7alazon
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Transforms.Categorical.OneHotEncoding(@"new_reviews", @"new_reviews", outputKind: OneHotEncodingEstimator.OutputKind.Indicator)      
+            var pipeline = mlContext.Transforms.Text.FeaturizeText(inputColumnName:@"new_reviews",outputColumnName:@"new_reviews")      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"new_reviews"}))      
                                     .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName:@"score",inputColumnName:@"score"))      
                                     .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy(new SdcaMaximumEntropyMulticlassTrainer.Options(){L1Regularization=1F,L2Regularization=0.1F,LabelColumnName=@"score",FeatureColumnName=@"Features"}))      
+                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(new LbfgsLogisticRegressionBinaryTrainer.Options(){L1Regularization=1F,L2Regularization=1F,LabelColumnName=@"score",FeatureColumnName=@"Features"}), labelColumnName:@"score"))      
                                     .Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName:@"PredictedLabel",inputColumnName:@"PredictedLabel"));
 
             return pipeline;

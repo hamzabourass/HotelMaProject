@@ -27,7 +27,7 @@ namespace _7alazon.Models
         [DataType(DataType.Date)]
         [Required]
         public System.DateTime CommentDate { get; set; }
-    
+
         public virtual Hotel Hotel { get; set; }
         public virtual User User { get; set; }
     }
